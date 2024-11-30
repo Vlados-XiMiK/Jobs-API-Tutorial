@@ -8,10 +8,10 @@ const createJob = async (req, res) => {
   res.send('create job')
 }
 const updateJob = async (req, res) => {
-  res.send('update jobs')
+  res.send('update job')
 }
-const deleteJobs = async (req, res) => {
-  res.send('delete jobs')
+const deleteJob = async (req, res) => {
+  res.send('delete job')
 }
 
 module.exports = {
@@ -19,5 +19,5 @@ module.exports = {
   getJob,
   createJob,
   updateJob,
-  deleteJobs,
+  deleteJob,
 }
