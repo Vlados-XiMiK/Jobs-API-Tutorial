@@ -15,11 +15,16 @@ const login = async (req, res) => {
   }
 
   const user = await User.findOne({ email })
-  // compare password
+
   if (!user) {
     throw new UnauthenticatedError('Invalid Creditials')
   }
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
+    throw new UnauthenticatedError('Invalid Creditials')
+  }
 
+  // compare password
   const token = user.createJWT()
   res.status(StatusCodes.OK).json({ user: { name: user.name }, token })
 }
